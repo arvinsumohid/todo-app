@@ -1,12 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 
+function themeColor() {
+  const html = document.querySelector('html').classList
+  if(html.contains('dark')) html.remove('dark')
+  else html.add('dark')
+}
+
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-light-vlg dark:bg-dark-vdb">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p className="text-gray-500">
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -17,6 +23,7 @@ function App() {
         >
           Learn React
         </a>
+        <button className="text-black dark:text-white"  onClick={themeColor}>Switch Theme</button> 
       </header>
     </div>
   );
