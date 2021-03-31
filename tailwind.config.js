@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   purge: [],
   presets: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     screens: {
       sm: '640px',
@@ -26,6 +26,22 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      light: {
+        vlg: 'hsl(0, 0%, 98%)',
+        vlgb: 'hsl(236, 33%, 92%)',
+        lgb: 'hsl(233, 11%, 84%)',
+        dgb: 'hsl(236, 9%, 61%)',
+        vdgb: 'hsl(235, 19%, 35%)'
+      },
+      dark: {
+        vdb: 'hsl(235, 21%, 11%)',
+        vddb: 'hsl(235, 24%, 19%)',
+        lgb: 'hsl(234, 39%, 85%)',
+        lgbh: 'hsl(236, 33%, 92%)',
+        dgb: 'hsl(234, 11%, 52%)',
+        vdgb: 'hsl(233, 14%, 35%)',
+        vdgbh: 'hsl(237, 14%, 26%)',
+      }
     },
     spacing: {
       px: '1px',
@@ -190,6 +206,10 @@ module.exports = {
         '"Courier New"',
         'monospace',
       ],
+      josefin:[
+        'Josefin Sans',
+        'sans-serif'
+      ]
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
