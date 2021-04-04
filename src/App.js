@@ -6,12 +6,6 @@ import { connect } from 'react-redux';
 import actions from './store/actions'
 import './App.css';
 
-function themeColor() {
-  const html = document.querySelector('html').classList
-  if(html.contains('dark')) html.remove('dark')
-  else html.add('dark')
-}
-
 function App(props) {
 
   useEffect(() => {

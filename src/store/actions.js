@@ -33,7 +33,6 @@ const toggleTheme = () => {
 }
 
 const deleteTodo = (id) => {
-    console.log('delete', id)
     return dispatch => {
         dispatch({
             type: 'DELETE_TODO',
@@ -44,10 +43,18 @@ const deleteTodo = (id) => {
     }
 }
 
+const clearCompleted = () => {
+    return dispatch => {
+        dispatch({
+            type: 'CLEAR_COMPLETED',
+        })
+    }
+}
 
 export default {
     addTodo,
     toggleTodo,
     deleteTodo,
-    toggleTheme
+    toggleTheme,
+    clearCompleted
 }

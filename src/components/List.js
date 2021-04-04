@@ -1,12 +1,10 @@
-import { useSelector, useDispatch } from 'react-redux';
-import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import actions from '../store/actions'
 import cross from '../images/icon-cross.svg'
 
 const List = ({todoList}) => {
     const dispatch = useDispatch()
-    const [checked, setChecked] = useState(false);
 
     function handleCheck(evt) {
         const listItem = evt.target.parentNode
@@ -43,7 +41,7 @@ const List = ({todoList}) => {
     function RemoveBtn({dataId}) {
         return (
             <button className="button-close flex-shrink" onClick={handleDelete.bind(null, dataId)} data-id={dataId}>
-                <img src={cross} />
+                <img src={cross} alt="Cross" />
             </button>
         )
     }

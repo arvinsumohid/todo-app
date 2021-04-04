@@ -1,12 +1,6 @@
 const initialTodo = {
     isDarked: true,
-    todoList: [
-        // {
-        //     id: 1,
-        //     label: 'initial',
-        //     isCompleted: false
-        // }
-    ]
+    todoList: [],
 }
 
 const todo = (state = initialTodo, action) => {
@@ -29,16 +23,13 @@ const todo = (state = initialTodo, action) => {
 
         case 'TOGGLE_TODO': {
             const {id, checked} = action.payload
-            console.log('reducer', checked)
             const newState = state.todoList.map((todo) => {
                 if(todo.id === parseInt(id)) {
-                    console.log('concolse', id);
                     return { id: parseInt(id), label: todo.label, isCompleted: checked}
                 }
                 
                 return todo
             })
-            console.log('test:', newState)
             return {
                 ...state,
                 todoList: [
@@ -50,6 +41,16 @@ const todo = (state = initialTodo, action) => {
         case 'DELETE_TODO': {
             const {id} = action.payload
             const newState = state.todoList.filter( todo => todo.id !== parseInt(id) )
+            return {
+                ...state,
+                todoList: [
+                    ...newState
+                ]
+            }
+        }
+
+        case 'CLEAR_COMPLETED' : {
+            const newState = state.todoList.filter( todo => !todo.isCompleted)
             return {
                 ...state,
                 todoList: [

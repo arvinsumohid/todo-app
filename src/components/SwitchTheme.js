@@ -8,13 +8,13 @@ import moon from '../images/icon-moon.svg';
 const SwitchTheme = ({isDarked, ...rest}) => {
     const dispatch = useDispatch()
 
-    function themeChange(evt) {
+    function themeChange() {
         dispatch(actions.toggleTheme())
     }
 
     return (
         <div {...rest}>
-            <img src={isDarked ? sun : moon} onClick={themeChange} />
+            <img src={isDarked ? sun : moon} alt={isDarked ? 'Sun' : 'Moon'} onClick={themeChange} />
         </div>
     )
 }

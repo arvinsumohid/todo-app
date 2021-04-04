@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import actions from '../store/actions'
 
@@ -6,7 +6,6 @@ import actions from '../store/actions'
 const InputField = ({...rest}) => {
     const dispatch = useDispatch()
     const [input, setInput] = useState('');
-    const {todoList} = useSelector(state => state.todoList)
 
     function handleChange(evt) {
         setInput(evt.target.value)

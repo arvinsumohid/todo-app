@@ -6,7 +6,7 @@ const BackgroundImage = ({isDarked}) => {
 
     return (
         <div className="imagebox w-full absolute top-0 left-0">
-            <img src={isDarked ? darkImageDesktop : lightImageDesktop} alt="Background Image" className="w-full" />
+            <img src={isDarked ? darkImageDesktop : lightImageDesktop} alt={isDarked ? 'hallway' : 'mountain'} className="w-full" />
         </div>
     )
 }
