@@ -1,11 +1,11 @@
 import List from './List';
 import HandlerEvent from './HandlerEvent';
 
-const ListContainer = ({...rest}) => {
+const ListContainer = ({todoNumber, todoList, ...rest}) => {
     return (
         <div {...rest}>
-            <List />
-            <HandlerEvent />
+            <List todoList={todoList}/>
+            <HandlerEvent todoNumber={todoNumber} />
         </div>
     )
 }

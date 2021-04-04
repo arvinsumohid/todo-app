@@ -1,66 +1,18 @@
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+
+import actions from '../store/actions'
 import cross from '../images/icon-cross.svg'
 
-const List = () => {
-    const items = [
-                    {
-                        label: 'Complete online Javascript course',
-                        isChecked: false,
-                        isCompleted: false
-                    },
-                    {
-                        label: 'Jog around the park 3x',
-                        isChecked: false,
-                        isCompleted: false
-                    },
-                    {
-                        label: '10 minutes meditation',
-                        isChecked: false,
-                        isCompleted: false
-                    },
-                    {
-                        label: 'Read for 1 hour',
-                        isChecked: false,
-                        isCompleted: false
-                    },
-                    {
-                        label: 'Pick up groceries',
-                        isChecked: false,
-                        isCompleted: false
-                    },
-                    {
-                        label: 'Complete Todo App on Frontend Mentor',
-                        isChecked: false,
-                        isCompleted: false
-                    }
-                ]
-
-    function Item({label}) {
-        return (
-            <li className="list-item w-full relative font-josefin w-full bg-light-vlg dark:bg-dark-vddb pr-6 text-left flex item-center">
-                
-                <label className="text-base flex-auto py-4 pl-16 cursor-pointer">
-                    <span className="label text-dark-lgb text-lg">{label}</span>
-                    <input type="checkbox" onChange={handleCheck}/>
-                    <span className="checkmark"></span>
-                </label>
-
-                <RemoveBtn />
-            </li>
-        )
-    }
-
-    function RemoveBtn() {
-        return (
-            <button className="button-close flex-shrink">
-                <img src={cross} />
-            </button>
-        )
-    }
+const List = ({todoList}) => {
+    const dispatch = useDispatch()
+    const [checked, setChecked] = useState(false);
 
     function handleCheck(evt) {
-        if( document.querySelector('html').classList.contains('dark') ) {
-            const listItem = evt.target.parentNode
+        const listItem = evt.target.parentNode
+        
 
+        if( document.querySelector('html').classList.contains('dark') ) {
             if( evt.target.checked ) {
                 listItem.querySelector('.label').classList.add('line-through', 'text-dark-vdgb')
                 listItem.querySelector('.label').classList.remove('text-dark-lgb')
@@ -70,16 +22,58 @@ const List = () => {
                 listItem.querySelector('.label').classList.add('text-dark-lgb')
                 listItem.parentNode.querySelector('button').classList.remove('hidden')
             }
+        } else {
+            if( evt.target.checked ) {
+                listItem.querySelector('.label').classList.add('line-through')
+                listItem.parentNode.querySelector('button').classList.add('hidden')
+            } else {
+                listItem.querySelector('.label').classList.remove('line-through')
+                listItem.parentNode.querySelector('button').classList.remove('hidden')
+            }
         }
+
+        dispatch(actions.toggleTodo(evt.target.id, evt.target.checked))
+
     }
 
-    return (
-        <ul>
-            {Object.keys(items).map(fieldKey => {
-                return <Item key={fieldKey} label={items[fieldKey].label} />
-            })}
-        </ul>
-    )
+    function handleDelete(id) {
+        dispatch(actions.deleteTodo(id))
+    }
+
+    function RemoveBtn({dataId}) {
+        return (
+            <button className="button-close flex-shrink" onClick={handleDelete.bind(null, dataId)} data-id={dataId}>
+                <img src={cross} />
+            </button>
+        )
+    }
+
+    function Item({id, label, isCompleted}) {
+        return (
+            <li className="list-item w-full relative font-josefin w-full bg-light-vlg dark:bg-dark-vddb pr-6 text-left flex item-center border-light-vlg dark:border-dark-vdgb">
+                
+                <label className="text-base flex-auto py-4 pl-16 cursor-pointer">
+                    <span className={`label text-light-vdgb dark:text-dark-lgb text-lg font-josefin ${isCompleted && 'line-through'}`}>{label}</span>
+                    <input id={id} type="checkbox" onChange={handleCheck} defaultChecked={isCompleted}/>
+                    <span className="checkmark"></span>
+                </label>
+
+                <RemoveBtn dataId={id} />
+            </li>
+        )
+    }
+
+    if( todoList.length !== 0 )
+
+        return  (
+            <ul>
+                {todoList.map(todo => {
+                    return <Item key={todo.id} id={todo.id} isCompleted={todo.isCompleted} label={todo.label} />
+                })}
+            </ul>
+        )
+
+    return <p className="text-dark-dgb font-josefin font-bold pt-5">No Data Found.</p>
 }
 
 export default List;
