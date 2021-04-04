@@ -26,6 +26,7 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      brightBlue: 'hsl(220, 98%, 61%)',
       light: {
         vlg: 'hsl(0, 0%, 98%)',
         vlgb: 'hsl(236, 33%, 92%)',
@@ -428,6 +429,7 @@ module.exports = {
       wide: '0.025em',
       wider: '0.05em',
       widest: '0.1em',
+      widestx3: '0.3em'
     },
     lineHeight: {
       none: '1',
