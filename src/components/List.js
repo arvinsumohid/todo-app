@@ -48,10 +48,10 @@ const List = ({todoList}) => {
 
     function Item({id, label, isCompleted}) {
         return (
-            <li className="list-item w-full relative font-josefin w-full bg-light-vlg dark:bg-dark-vddb pr-6 text-left flex item-center border-light-vlg dark:border-dark-vdgb">
+            <li className="list-item w-full relative font-josefin w-full bg-light-vlg dark:bg-dark-vddb pr-6 text-xs lg:text-lg text-left flex item-center border-light-vlg dark:border-dark-vdgb">
                 
-                <label className="text-base flex-auto py-4 pl-16 cursor-pointer">
-                    <span className={`label text-light-vdgb dark:text-dark-lgb text-lg font-josefin ${isCompleted && 'line-through'}`}>{label}</span>
+                <label className="text-base flex-auto py-4 text-xs lg:text-lg lg:py-4 pl-12 lg:pl-16 cursor-pointer">
+                    <span className={`label text-light-vdgb dark:text-dark-lgb text-xs lg:text-lg font-josefin ${isCompleted && 'line-through'}`}>{label}</span>
                     <input id={id} type="checkbox" onChange={handleCheck} defaultChecked={isCompleted}/>
                     <span className="checkmark"></span>
                 </label>
@@ -71,7 +71,7 @@ const List = ({todoList}) => {
             </ul>
         )
 
-    return <p className="text-dark-dgb font-josefin font-bold pt-5">No Data Found.</p>
+    return <p className="text-dark-dgb text-sm lg:text-base font-josefin font-bold pt-5">No Data Found.</p>
 }
 
 export default List;

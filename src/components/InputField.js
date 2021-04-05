@@ -20,7 +20,7 @@ const InputField = ({...rest}) => {
 
     return (
         <div {...rest}>
-            <input type="text" placeholder="Create a new todo..." className="font-josefin w-full text-light-dgb dark:text-dark-dgb placeholder-light-lgb dark:placeholder-dark-dgb font-bold bg-light-vlg dark:bg-dark-vddb py-4 pl-16" onChange={handleChange} onKeyDown={handleKeyDown} />
+            <input type="text" placeholder="Create a new todo..." className="font-josefin w-full text-light-dgb dark:text-dark-dgb placeholder-light-lgb text-xs lg:text-lg dark:placeholder-dark-dgb font-bold bg-light-vlg dark:bg-dark-vddb py-5 lg:py-4 pl-12 lg:pl-16" onChange={handleChange} onKeyDown={handleKeyDown} />
         </div>
     )
 }
