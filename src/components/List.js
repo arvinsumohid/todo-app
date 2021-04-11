@@ -64,14 +64,14 @@ const List = ({todoList}) => {
     if( todoList.length !== 0 )
 
         return  (
-            <ul>
+            <ul className="bg-light-vlg dark:bg-dark-vddb">
                 {todoList.map(todo => {
                     return <Item key={todo.id} id={todo.id} isCompleted={todo.isCompleted} label={todo.label} />
                 })}
             </ul>
         )
 
-    return <p className="text-dark-dgb text-sm lg:text-base font-josefin font-bold pt-5">No Data Found.</p>
+    return <p className="text-dark-dgb text-sm lg:text-base font-josefin font-bold py-5 bg-light-vlg dark:bg-dark-vddb">No Data Found.</p>
 }
 
 export default List;

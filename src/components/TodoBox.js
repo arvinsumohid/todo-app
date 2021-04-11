@@ -12,7 +12,7 @@ const TodoBox = ({props}) => {
 
             <InputField className=" circle-design relative w-full bg-light-vlg dark:bg-dark-vddb rounded-md lg:rounded text-sm lg:text-base overflow-hidden mb-8 md:mb-5" />
 
-            <ListContainer todoNumber={props.todoNumber} todoList={props.todoList} className="list-container relative w-full bg-light-vlg dark:bg-dark-vddb rounded-md lg:rounded overflow-hidden" />
+            <ListContainer todoNumber={props.todoNumber} todoList={props.todoList} className="list-container relative w-full rounded-md lg:rounded overflow-hidden" />
 
         </div>
     )

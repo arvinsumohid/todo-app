@@ -119,3 +119,9 @@
        box-shadow: none;
     }
 }
+
+@media (max-width: 767px) {
+    html:not(.dark) .statusbox {
+        box-shadow: 0 -50px 60px 0 rgba(209.712, 210.7592, 218.688, var(--tw-bg-opacity));
+    }
+}
